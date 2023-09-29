@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header>
       <div>
-        <span className="logo">Coffee House</span>
+        <div className="logo">Coffee House</div>
         <ul className="navigation">
           <li>Coffee</li>
           <li>Tea</li>

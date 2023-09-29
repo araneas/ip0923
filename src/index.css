@@ -41,14 +41,48 @@ header ul.navigation li:hover {
 
 header .banner {
   margin: 50px 0;
-  background: url("./images/banner.jpg") no-repeat;
+  background: url("./banner/banner.jpeg") no-repeat;
+
   width: 100%;
-  height: 400px;
+  height: 250px;
   background-size: cover;
   background-position: center center;
   background-blend-mode: multiply;
   background-color: rgb(233, 221, 190);
   position: relative;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+main .item {
+  width: 7%;
+  margin-bottom: 50px;
+  background:rgb(231, 224, 207);
+  overflow: hidden;
+}
+
+main .item img {
+width: 100%;
+height: 70px;
+cursor: pointer;
+transition: transform 1000ms ease;
+}
+
+main .item img:hover {
+transform: scale(1.05);
+opacity: 0.75;
+}
+
+main p {
+  margin: 5px 5px;
+  text-align: center;
+  font-weight: 700;
 }
 
 footer {
