@@ -1,12 +1,16 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 import React from "react";
-import Menu from "./components/menu";
+import Assortment from "./components/assortment";
+//
+//
+//
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: [
+      cartOrderList: [ ],
+      assortment: [
         {
           id: 1,
           title: "Americano",
@@ -72,16 +76,38 @@ class App extends React.Component {
         },
       ],
     };
+    this.addToCartOrderList = this.addToCartOrderList.bind(this)
+    this.deleteFromCartOrderList = this.deleteFromCartOrderList.bind(this)
   }
   render() {
     return (
       <div className="wrapper">
-        <Header />
-        <Menu menu={this.state.menu} />
+        <Header cartOrderList={this.state.cartOrderList} onDeleteFromCartOrderList={this.deleteFromCartOrderList} />
+        <Assortment assortment={this.state.assortment} onAddToCartOrderList={this.addToCartOrderList} />
         <Footer />
       </div>
     );
   }
+  //
+  //
+  //
+  deleteFromCartOrderList(id) {
+    this.setState({cartOrderList: this.state.cartOrderList.filter(elementDelete => elementDelete.id !== id)})
+  }
+  //
+  //
+  //
+  addToCartOrderList(itemAdd) {
+    let actuallyInCartOrderList = false
+    this.state.cartOrderList.forEach(elementAdd => {
+      if (elementAdd.id === itemAdd.id)
+        actuallyInCartOrderList = true
+    })
+    if (!actuallyInCartOrderList)
+    this.setState({ cartOrderList: [...this.state.cartOrderList, itemAdd] })
+  }
 }
-
+//
+//
+//
 export default App;
