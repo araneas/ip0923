@@ -41,7 +41,10 @@ export default function Header(props) {
   return (
     <header>
       <div>
-        <div className="logo">Coffee House</div>
+        <div className="logo-block">
+        <img className="logo-img" src={"./images/logo.jpg"} />
+        <div className="logo-name">Coffee House</div>
+        </div>
         <ul className="navigation">
           <li>
             <FaMailBulk />

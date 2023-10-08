@@ -8,7 +8,12 @@ export class Assortment extends Component {
     return (
       <main>
         {this.props.assortment.map((element) => (
-          <ItemAdd key={element.id} itemAdd={element} onAddToCartOrderList={this.props.onAddToCartOrderList} />
+          <ItemAdd
+            showItemPage={this.props.showItemPage}
+            key={element.id}
+            item={element}
+            onAddToCartOrderList={this.props.onAddToCartOrderList}
+          />
         ))}
       </main>
     );

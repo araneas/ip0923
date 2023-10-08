@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-//
-//
-//
+import React, { Component } from 'react'
 
-export class ItemAdd extends Component {
+export class ItemAbout extends Component {
   render() {
     return (
-      <div className="item-add-delete">
+      <div className="item-about">
+        <div className='item-about-wrapper'>
         <div onClick=
           {() => this.props.showItemPage(this.props.item)}>
         <img src={"./images/" + this.props.item.image} />
@@ -21,11 +19,11 @@ export class ItemAdd extends Component {
         >
           to Cart
         </p>
+        </div>
+        
       </div>
-    );
+    )
   }
 }
-//
-//
-//
-export default ItemAdd;
+
+export default ItemAbout

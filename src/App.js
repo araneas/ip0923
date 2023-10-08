@@ -2,6 +2,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import React from "react";
 import Assortment from "./components/assortment";
+import ItemAbout from "./components/itemabout";
 //
 //
 //
@@ -75,15 +76,19 @@ class App extends React.Component {
           price: "3",
         },
       ],
+      showItemAbout: false,
+      itemAbout: {}
     };
     this.addToCartOrderList = this.addToCartOrderList.bind(this)
     this.deleteFromCartOrderList = this.deleteFromCartOrderList.bind(this)
+    this.showItemPage = this.showItemPage.bind(this)
   }
   render() {
     return (
       <div className="wrapper">
         <Header cartOrderList={this.state.cartOrderList} onDeleteFromCartOrderList={this.deleteFromCartOrderList} />
-        <Assortment assortment={this.state.assortment} onAddToCartOrderList={this.addToCartOrderList} />
+        <Assortment showItemPage={this.showItemPage} assortment={this.state.assortment} onAddToCartOrderList={this.addToCartOrderList} />
+        {this.state.showItemAbout && <ItemAbout showItemPage={this.showItemPage} onAddToCartOrderList={this.addToCartOrderList} item={this.state.itemAbout} />}
         <Footer />
       </div>
     );
@@ -91,20 +96,27 @@ class App extends React.Component {
   //
   //
   //
-  deleteFromCartOrderList(id) {
-    this.setState({cartOrderList: this.state.cartOrderList.filter(elementDelete => elementDelete.id !== id)})
+  showItemPage(item) {
+    this.setState({itemAbout: item})
+    this.setState({showItemAbout: !this.state.showItemAbout})
   }
   //
   //
   //
-  addToCartOrderList(itemAdd) {
+  deleteFromCartOrderList(id) {
+    this.setState({cartOrderList: this.state.cartOrderList.filter(element => element.id !== id)})
+  }
+  //
+  //
+  //
+  addToCartOrderList(item) {
     let actuallyInCartOrderList = false
-    this.state.cartOrderList.forEach(elementAdd => {
-      if (elementAdd.id === itemAdd.id)
+    this.state.cartOrderList.forEach(element => {
+      if (element.id === item.id)
         actuallyInCartOrderList = true
     })
     if (!actuallyInCartOrderList)
-    this.setState({ cartOrderList: [...this.state.cartOrderList, itemAdd] })
+    this.setState({ cartOrderList: [...this.state.cartOrderList, item] })
   }
 }
 //

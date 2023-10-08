@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {FaTrash} from "react-icons/fa"
+import { FaTrash } from "react-icons/fa";
 //
 //
 //
@@ -10,7 +10,12 @@ export class ItemDelete extends Component {
         <img src={"./images/" + this.props.item.image} />
         <p>{this.props.item.title}</p>
         <p>price: {this.props.item.price}$</p>
-        <FaTrash className="item-delete" onClick={() => this.props.onDeleteFromCartOrderList(this.props.item.id)}/>
+        <FaTrash
+          className="item-delete"
+          onClick={() =>
+            this.props.onDeleteFromCartOrderList(this.props.item.id)
+          }
+        />
       </div>
     );
   }
